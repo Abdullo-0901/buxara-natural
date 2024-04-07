@@ -1,9 +1,5 @@
-import { HeaderMenu } from "./components/Header/headers";
+import { Router } from "./components/router";
 
 export default function App() {
-  return (
-    <>
-      <HeaderMenu />
-    </>
-  );
+  return <Router />;
 }

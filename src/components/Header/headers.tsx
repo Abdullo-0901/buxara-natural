@@ -1,6 +1,7 @@
 import { Menu, Group, Center, Burger, Container } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import classes from "./headr.menu.module.css";
+import Language from "../language/language";
 
 const links = [
   { link: "/about", label: "Features" },
@@ -19,11 +20,6 @@ const links = [
   {
     link: "#2",
     label: "Support",
-    links: [
-      { link: "/faq", label: "FAQ" },
-      { link: "/demo", label: "Book a demo" },
-      { link: "/forums", label: "Forums" },
-    ],
   },
 ];
 
@@ -31,56 +27,42 @@ export function HeaderMenu() {
   const [opened, { toggle }] = useDisclosure(false);
 
   const items = links.map((link) => {
-    const menuItems = link.links?.map((item) => (
-      <Menu.Item key={item.link}>{item.label}</Menu.Item>
-    ));
-
-    if (menuItems) {
-      return (
-        <Menu
-          key={link.label}
-          trigger="hover"
-          transitionProps={{ exitDuration: 0 }}
-          withinPortal
-        >
-          <Menu.Target>
-            <a
-              href={link.link}
-              className={classes.link}
-              onClick={(event) => event.preventDefault()}
-            >
-              <Center>
-                <span className={classes.linkLabel}>{link.label}</span>
-              </Center>
-            </a>
-          </Menu.Target>
-          <Menu.Dropdown>{menuItems}</Menu.Dropdown>
-        </Menu>
-      );
-    }
-
     return (
-      <a
+      <Menu
         key={link.label}
-        href={link.link}
-        className={classes.link}
-        onClick={(event) => event.preventDefault()}
+        trigger="hover"
+        transitionProps={{ exitDuration: 0 }}
+        withinPortal
       >
-        {link.label}
-      </a>
+        <Menu.Target>
+          <a
+            href={link.link}
+            className={classes.link}
+            onClick={(event) => event.preventDefault()}
+          >
+            <Center>
+              <span className={classes.linkLabel}>{link.label}</span>
+            </Center>
+          </a>
+        </Menu.Target>
+      </Menu>
     );
   });
 
   return (
     <header className={classes.header}>
-      <Container size="md">
+      <div className="max-w-[1450px] p-[0_8px] m-[0_auto]">
         <div className={classes.inner}>
           <Group gap={5} visibleFrom="sm">
             {items}
           </Group>
+          <select>
+            <option value="en">English</option>
+            <option value="ru">Russian</option>
+          </select>
           <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" />
         </div>
-      </Container>
+      </div>
     </header>
   );
 }

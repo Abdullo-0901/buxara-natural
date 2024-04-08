@@ -60,10 +60,7 @@ export function HeaderMenu() {
             </Link>
             {items}
           </Group>
-          <select>
-            <option value="en">English</option>
-            <option value="ru">Russian</option>
-          </select>
+
           <Language />
           <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" />
         </div>

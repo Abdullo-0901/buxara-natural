@@ -1,5 +1,6 @@
-import { Menu, Group, Center, Burger, Container } from "@mantine/core";
+import { Burger, Center, Group, Menu } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import { Link } from "react-router-dom";
 import classes from "./headr.menu.module.css";
 import Language from "../language/language";
 
@@ -54,12 +55,16 @@ export function HeaderMenu() {
       <div className="max-w-[1450px] p-[0_8px] m-[0_auto]">
         <div className={classes.inner}>
           <Group gap={5} visibleFrom="sm">
+            <Link to="/">
+              <img src="/logo.png" className="h-[36px]" alt="" />
+            </Link>
             {items}
           </Group>
           <select>
             <option value="en">English</option>
             <option value="ru">Russian</option>
           </select>
+          <Language />
           <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" />
         </div>
       </div>

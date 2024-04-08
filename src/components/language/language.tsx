@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 function Language() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,16 +12,18 @@ function Language() {
 
   // Setting initial language based on localStorage or defaulting to "en"
   const initialLanguage =
-    typeof window !== 'undefined' ? localStorage.getItem('i18nextLngOne') || 'en' : 'uz';
+    typeof window !== "undefined"
+      ? localStorage.getItem("i18nextLngOne") || "ru"
+      : "uz";
 
   // State to hold the selected language
   const [selectedLanguage, setSelectedLanguage] = useState(initialLanguage);
 
   // Effect to update i18n language and localStorage when selected language changes
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       i18n.changeLanguage(selectedLanguage);
-      localStorage.setItem('i18nextLngOne', selectedLanguage);
+      localStorage.setItem("i18nextLngOne", selectedLanguage);
     }
   }, [selectedLanguage, i18n]);
 
@@ -32,15 +34,16 @@ function Language() {
 
   return (
     <div className="custom-dropdown" onClick={toggleMenu}>
-      <form className="mx-auto max-w-sm">
+      {/* Language selection dropdown */}
+      <form className="max-w-sm mx-auto">
         <select
           id="countries"
           onChange={(e) => onChangeLanguage(e.target.value)}
           value={selectedLanguage}
-          className=" inline-block rounded-lg border border-gray-300 bg-gray-50 p-2 text-sm text-gray-900  outline-none"
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500"
         >
-          <option value="uz">Uz</option>
-          <option value="en">En</option>
+          <option value={"uz"}>Узбек</option>
+          <option value="ru">Руский</option>
         </select>
       </form>
     </div>

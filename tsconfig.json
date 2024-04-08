@@ -26,11 +26,6 @@
     "src",
     "src/locales"
   ],
-  "paths": {
-    "@/*": [
-      "./components/*"
-    ]
-  },
   "references": [
     {
       "path": "./tsconfig.node.json"

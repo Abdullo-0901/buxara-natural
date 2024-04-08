@@ -1,35 +1,31 @@
-import { Burger, Flex, Group, Menu, NavLink } from "@mantine/core";
+import { Burger, Flex, Group, Menu } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Language from "../language/language";
 import classes from "./headr.menu.module.css";
 
 const links = [
-  { link: "/", label: "navlink1" },
+  { link: "/", label: "navlink1", id: 1 },
   {
     link: "/collection",
     label: "navlink2",
+    id: 2,
   },
-  { link: "/about", label: "navlink3" },
-  { link: "/pricing", label: "Pricing" },
-  {
-    link: "/company",
-    label: "navlink4",
-  },
+  { link: "/about", label: "navlink3", id: 3 },
+
   {
     link: "/contact",
     label: "navlink5",
+    id: 5,
   },
 ];
 
 export function HeaderMenu() {
   const [t] = useTranslation();
   const [opened, { toggle }] = useDisclosure(false);
-  const [active, setActive] = useState(0);
 
-  const items = links.map((link, index) => {
+  const items = links.map((link) => {
     return (
       <Menu
         key={link.label}
@@ -40,13 +36,16 @@ export function HeaderMenu() {
         <Menu.Target>
           <Flex>
             <NavLink
-              className={classes.link}
-              href={link.link}
-              key={link.label}
-              active={index === active}
-              label={t(link.label)}
-              onClick={() => setActive(index)}
-            />
+              to={link.link}
+              style={({ isActive }) => {
+                return {
+                  fontWeight: isActive ? "bold" : "",
+                  color: isActive ? "black" : "gray",
+                };
+              }}
+            >
+              {t(link.label)}
+            </NavLink>
           </Flex>
         </Menu.Target>
       </Menu>
@@ -57,8 +56,8 @@ export function HeaderMenu() {
     <header className={classes.header}>
       <div className="max-w-[1450px] p-[0_8px] m-[0_auto]">
         <div className={classes.inner}>
-          <Group gap={5} visibleFrom="sm">
-            <Link to="/">
+          <Group gap={"sm"} visibleFrom="sm">
+            <Link to="/" className="mr-4">
               <img src="/logo.png" className="h-[36px]" alt="" />
             </Link>
             {items}

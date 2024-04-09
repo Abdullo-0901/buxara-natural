@@ -1,5 +1,9 @@
 import { useTranslation } from "react-i18next";
-import { getHomeSection2, getWinterProductsHome } from "../lib/api";
+import {
+  getHomeSection2,
+  getSummerProductsHome,
+  getWinterProductsHome,
+} from "../lib/api";
 import { useEffect, useState } from "react";
 import { HomeSection, WinterProductHome } from "../lib/types/home";
 import { Skeleton } from "@mantine/core";
@@ -10,6 +14,7 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [homeSection, setHomeSection] = useState<HomeSection[]>([]); // TODO: add state when API is ready.
   const [winter, setWinter] = useState<WinterProductHome[]>([]);
+  const [summer, setSummer] = useState<WinterProductHome[]>([]);
 
   const { t } = useTranslation();
 
@@ -17,12 +22,15 @@ const Home = () => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const [fetchedHomeSection2, fetchedWinterCard] = await Promise.all([
-          getHomeSection2(),
-          getWinterProductsHome(),
-        ]);
+        const [fetchedHomeSection2, fetchedWinterCard, fetchedSummerCard] =
+          await Promise.all([
+            getHomeSection2(),
+            getWinterProductsHome(),
+            getSummerProductsHome(),
+          ]);
         setHomeSection(fetchedHomeSection2);
         setWinter(fetchedWinterCard);
+        setSummer(fetchedSummerCard);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -111,9 +119,23 @@ const Home = () => {
         <CardsComponent data={winter} t={t} />
       </section>
 
+      <CardComponents color="#5c507e" img="card3.png" />
+
+      <section>
+        <main className="flex justify-center flex-col items-center">
+          <h1 className="text-5xl font-serif font-bold">
+            {t("qishcollectiontitle")}
+          </h1>
+          <p className="text-[#bcbcbc] text-lg xl mt-3 font-serif">
+            {t("summercollectiontitle")}
+          </p>
+        </main>
+
+        <CardsComponent data={summer} t={t} />
+      </section>
+
       {/* section Cards */}
 
-      <CardComponents color="#5c507e" img="card3.png" />
       <CardComponents color="#2d7672" img="card4.png" />
     </div>
   );

@@ -10,3 +10,5 @@ export interface WinterProductHome {
   name: string;
   img: string;
 }
+
+export interface SummerProductHome extends WinterProductHome {}

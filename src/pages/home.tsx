@@ -1,12 +1,15 @@
 import { useTranslation } from "react-i18next";
-import { getHomeSection2 } from "../lib/api";
+import { getHomeSection2, getWinterProductsHome } from "../lib/api";
 import { useEffect, useState } from "react";
-import { HomeSection } from "../lib/types/home";
+import { HomeSection, WinterProductHome } from "../lib/types/home";
 import { Skeleton } from "@mantine/core";
+import CardComponents from "../components/card";
+import CardsComponent from "../components/cards";
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [homeSection, setHomeSection] = useState<HomeSection[]>([]); // TODO: add state when API is ready.
+  const [winter, setWinter] = useState<WinterProductHome[]>([]);
 
   const { t } = useTranslation();
 
@@ -14,10 +17,12 @@ const Home = () => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const [fetchedHomeSection2] = await Promise.all([
-          getHomeSection2(), // Get the first three users for now
+        const [fetchedHomeSection2, fetchedWinterCard] = await Promise.all([
+          getHomeSection2(),
+          getWinterProductsHome(),
         ]);
         setHomeSection(fetchedHomeSection2);
+        setWinter(fetchedWinterCard);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -49,6 +54,8 @@ const Home = () => {
           </h1>
         </div>
       </section>
+      {/* section 2 */}
+
       <section className="grid sm:grid-cols-1 sm3:grid-cols-2 gap-5 lg:grid-cols-4 mt-8">
         {isLoading ? (
           <div className="grid grid-cols-3 gap-5 my-5 col-span-4">
@@ -85,6 +92,29 @@ const Home = () => {
           })
         )}
       </section>
+
+      {/* section 3 */}
+      <CardComponents color="#616884" img="card2.png" />
+
+      {/* section  4 */}
+
+      <section>
+        <main className="flex justify-center flex-col items-center">
+          <h1 className="text-5xl font-serif font-bold">
+            {t("qishcollectiontitle")}
+          </h1>
+          <p className="text-[#bcbcbc] text-lg xl mt-3 font-serif">
+            {t("wintercollectiondescription")}
+          </p>
+        </main>
+
+        <CardsComponent data={winter} t={t} />
+      </section>
+
+      {/* section Cards */}
+
+      <CardComponents color="#5c507e" img="card3.png" />
+      <CardComponents color="#2d7672" img="card4.png" />
     </div>
   );
 };

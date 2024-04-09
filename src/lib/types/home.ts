@@ -4,3 +4,9 @@ export interface HomeSection {
   description: string;
   img: string;
 }
+
+export interface WinterProductHome {
+  id: number;
+  name: string;
+  img: string;
+}

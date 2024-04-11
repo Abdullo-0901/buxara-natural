@@ -39,7 +39,7 @@ const Layout = () => {
       <div className="max-w-[1450px] overflow-hidden p-[0_8px] m-[0_auto] mt-2">
         <Outlet />
       </div>
-      <footer className="grid grid-cols-7 items-start max-w-[1450px] overflow-hidden p-[0_8px] m-[0_auto] mt-5">
+      <footer className="grid grid-cols-7 items-start max-w-[1450px] overflow-hidden p-[0_8px] m-[0_auto] mt-16">
         <div className="flex col-span-2 flex-col w-[310px] gap-y-3">
           <img className="w-[350px]" src="/logo.png" alt="" />
           <h1>{t("newscard1aboout")}</h1>

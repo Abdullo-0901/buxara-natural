@@ -14,23 +14,18 @@ import NewsCard from "../components/news.card";
 const Home = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [homeSection, setHomeSection] = useState<HomeSection[]>([]); // TODO: add state when API is ready.
-  const [winter, setWinter] = useState<WinterProductHome[]>([]);
   const [summer, setSummer] = useState<WinterProductHome[]>([]);
 
   const { t } = useTranslation();
-
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const [fetchedHomeSection2, fetchedWinterCard, fetchedSummerCard] =
-          await Promise.all([
-            getHomeSection2(),
-            getWinterProductsHome(),
-            getSummerProductsHome(),
-          ]);
+        const [fetchedHomeSection2, fetchedSummerCard] = await Promise.all([
+          getHomeSection2(),
+          getSummerProductsHome(),
+        ]);
         setHomeSection(fetchedHomeSection2);
-        setWinter(fetchedWinterCard);
         setSummer(fetchedSummerCard);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -66,40 +61,21 @@ const Home = () => {
       {/* section 2 */}
 
       <section className="grid sm:grid-cols-1 sm3:grid-cols-2 gap-5 lg:grid-cols-4 mt-8">
-        {isLoading ? (
-          <div className="grid grid-cols-3 gap-5 my-5 col-span-4">
-            <div>
-              <Skeleton height={50} width={100} circle mb="xl" />
-
-              <Skeleton height={8} radius="xl" />
-              <Skeleton height={8} mt={6} radius="xl" />
-            </div>
-            <div>
-              <Skeleton height={50} width={100} circle mb="xl" />
-
-              <Skeleton height={8} radius="xl" />
-              <Skeleton height={8} mt={6} radius="xl" />
-            </div>
-            <div>
-              <Skeleton height={50} width={100} circle mb="xl" />
-
-              <Skeleton height={8} radius="xl" />
-              <Skeleton height={8} mt={6} radius="xl" />
-            </div>
-          </div>
-        ) : (
-          homeSection?.map((elem) => {
-            return (
-              <div key={elem.id} className="flex  items-center gap-5">
-                <img src={`/section2_home/${elem.img}`} />
-                <div>
-                  <h1 className="font-bold text-[18px]">{t(elem.title)}</h1>
-                  <h1 className="text-[#bcbcbc]">{t(elem.description)}</h1>
+        {isLoading
+          ? Array.from({ length: 4 }, (_, i) => i).map((_item, index) => (
+              <Skeleton key={index} height={100} radius="md" />
+            ))
+          : homeSection?.map((elem) => {
+              return (
+                <div key={elem.id} className="flex  items-center gap-5">
+                  <img src={`/section2_home/${elem.img}`} />
+                  <div>
+                    <h1 className="font-bold text-[18px]">{t(elem.title)}</h1>
+                    <h1 className="text-[#bcbcbc]">{t(elem.description)}</h1>
+                  </div>
                 </div>
-              </div>
-            );
-          })
-        )}
+              );
+            })}
       </section>
 
       {/* section 3 */}
@@ -117,7 +93,11 @@ const Home = () => {
           </p>
         </main>
 
-        <CardsComponent data={winter} t={t} />
+        <CardsComponent
+          isLoading={isLoading}
+          data={summer.filter((el) => el.path == "winter")}
+          t={t}
+        />
       </section>
 
       <CardComponents color="504570" img="card3.png" />
@@ -132,7 +112,11 @@ const Home = () => {
           </p>
         </main>
 
-        <CardsComponent data={summer} t={t} />
+        <CardsComponent
+          isLoading={isLoading}
+          data={summer.filter((el) => el.path == "summer")}
+          t={t}
+        />
       </section>
 
       {/* section Cards */}

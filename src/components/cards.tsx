@@ -21,7 +21,7 @@ const CardsComponent = ({ data, t, isLoading }: CardComponentProps) => {
       ) : (
         data.map((card) => {
           return (
-            <Link key={card.id} to={`product/${t(card.name)}`}>
+            <Link key={card.id} to={`product/${card.name}`}>
               <Card
                 shadow="sm"
                 padding="lg"

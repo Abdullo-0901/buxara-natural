@@ -1,9 +1,12 @@
+import { Skeleton, Table } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
+import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
+import Contact from "../components/contact";
 import { getSummerProductsHome } from "../lib/api";
 import { WinterProductHome } from "../lib/types/home";
-import { Button, Skeleton, Table, Tabs } from "@mantine/core";
 
 const ProductParamsPage = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -107,19 +110,43 @@ const ProductParamsPage = () => {
           })}
         </>
       )}
-      <Button></Button>
-
-      <Tabs defaultValue="gallery" className="mt-32">
+      {/* 
+      <Tabs defaultValue="gallery" pos={Center} className="mt-32">
         <Tabs.List>
           <Tabs.Tab value="gallery">Description</Tabs.Tab>
           <Tabs.Tab value="messages">Reviews(0)</Tabs.Tab>
         </Tabs.List>
 
-        <Tabs.Panel value="gallery">Gallery tab content</Tabs.Panel>
+        <Tabs.Panel value="gallery">
+          <div className="flex flex-col gap-y-5  md:max-w-4xl m-[25px_auto]">
+            <h1>{t("paramstitle")}</h1>
+            <h1>{t("paramsdescription")}</h1>
+          </div>
+        </Tabs.Panel>
 
         <Tabs.Panel value="messages">Messages tab content</Tabs.Panel>
+      </Tabs> */}
 
-        <Tabs.Panel value="settings">Settings tab content</Tabs.Panel>
+      <Tabs className="flex flex-col mt-16 justify-center items-center">
+        <TabList>
+          <Tab>Title 1</Tab>
+          <Tab>Title 2</Tab>
+        </TabList>
+
+        <TabPanel>
+          <div className="flex flex-col gap-y-5  md:max-w-4xl m-[25px_auto]">
+            <h1 className="text-2xl text-[#444444] font-serif font-semibold">
+              {t("wintercollectioncardtavsif")}
+            </h1>
+            <h1 className="text-2xl text-[#444444] font-serif font-semibold">
+              {t("paramstitle")}
+            </h1>
+            <h1 className="text-[#666666]">{t("paramsdescription")}</h1>
+          </div>
+        </TabPanel>
+        <TabPanel>
+          <Contact />
+        </TabPanel>
       </Tabs>
     </div>
   );

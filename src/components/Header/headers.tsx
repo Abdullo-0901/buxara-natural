@@ -5,7 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 import Language from "../language/language";
 import classes from "./headr.menu.module.css";
 
-const links = [
+export const links = [
   { link: "/", label: "navlink1", id: 1 },
   {
     link: "/collection",

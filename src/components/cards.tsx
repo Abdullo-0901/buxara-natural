@@ -9,7 +9,7 @@ interface CardComponentProps {
 
 const CardsComponent = ({ data, t }: CardComponentProps) => {
   return (
-    <div className="grid grid-cols-5  items-center gap-5">
+    <div className="grid lg:grid-cols-5 sm:grid-cols-1 sm3:grid-cols-2 md:grid-cols-3  items-center gap-5">
       {data.map((card) => {
         return (
           <Card

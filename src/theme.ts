@@ -1,5 +1,18 @@
 import { createTheme } from "@mantine/core";
 
 export const theme = createTheme({
-  /* Put your mantine theme override here */
+  components: {
+    Input: {
+      styles: () => ({
+        input: {
+          border: "none", // Remove border
+          outline: "none", // Remove outline
+          "&:focus": {
+            border: "none", // Keep border transparent on focus
+            outline: "none",
+          },
+        },
+      }),
+    },
+  },
 });

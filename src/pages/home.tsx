@@ -9,6 +9,7 @@ import { HomeSection, WinterProductHome } from "../lib/types/home";
 import { Skeleton } from "@mantine/core";
 import CardComponents from "../components/card";
 import CardsComponent from "../components/cards";
+import NewsCard from "../components/news.card";
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -102,7 +103,7 @@ const Home = () => {
       </section>
 
       {/* section 3 */}
-      <CardComponents color="#616884" img="card2.png" />
+      <CardComponents color="616884" img="card2.png" />
 
       {/* section  4 */}
 
@@ -119,7 +120,7 @@ const Home = () => {
         <CardsComponent data={winter} t={t} />
       </section>
 
-      <CardComponents color="#5c507e" img="card3.png" />
+      <CardComponents color="504570" img="card3.png" />
 
       <section>
         <main className="flex justify-center flex-col items-center">
@@ -136,7 +137,29 @@ const Home = () => {
 
       {/* section Cards */}
 
-      <CardComponents color="#2d7672" img="card4.png" />
+      <CardComponents color="307e7a" img="card4.png" />
+
+      {/* News */}
+      <section className="grid grid-cols-3 gap-40">
+        <NewsCard
+          text="newscard1aboout"
+          t={t}
+          img="/news/news1.jpg"
+          title="newscard1title"
+        />
+        <NewsCard
+          text="newscard2aboout"
+          t={t}
+          img="/news/news2.jpg"
+          title="newscard1title"
+        />
+        <NewsCard
+          text="newscard3aboout"
+          t={t}
+          img="/news/news3.jpg"
+          title="newscard1title"
+        />
+      </section>
     </div>
   );
 };

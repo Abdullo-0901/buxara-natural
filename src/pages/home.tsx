@@ -1,9 +1,5 @@
 import { useTranslation } from "react-i18next";
-import {
-  getHomeSection2,
-  getSummerProductsHome,
-  getWinterProductsHome,
-} from "../lib/api";
+import { getHomeSection2, getSummerProductsHome } from "../lib/api";
 import { useEffect, useState } from "react";
 import { HomeSection, WinterProductHome } from "../lib/types/home";
 import { Skeleton } from "@mantine/core";

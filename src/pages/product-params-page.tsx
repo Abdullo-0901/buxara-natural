@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { getSummerProductsHome } from "../lib/api";
-import { SummerProductHome, WinterProductHome } from "../lib/types/home";
-import { Button, Flex, Skeleton, Table, Tabs } from "@mantine/core";
+import { WinterProductHome } from "../lib/types/home";
+import { Button, Skeleton, Table, Tabs } from "@mantine/core";
 
 const ProductParamsPage = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);

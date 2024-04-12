@@ -7,6 +7,7 @@ import "react-tabs/style/react-tabs.css";
 import Contact from "../components/contact";
 import { getSummerProductsHome } from "../lib/api";
 import { WinterProductHome } from "../lib/types/home";
+import ReactStars from "react-stars";
 
 const ProductParamsPage = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -129,8 +130,8 @@ const ProductParamsPage = () => {
 
       <Tabs className="flex flex-col mt-16 justify-center items-center">
         <TabList>
-          <Tab>Title 1</Tab>
-          <Tab>Title 2</Tab>
+          <Tab>{t("desc")}</Tab>
+          <Tab>{t("reviews")}(0)</Tab>
         </TabList>
 
         <TabPanel>
@@ -145,6 +146,15 @@ const ProductParamsPage = () => {
           </div>
         </TabPanel>
         <TabPanel>
+          <div className="flex flex-col gap-y-8 mt-16">
+            <span className="text-gray-400">{t("revtitle")}</span>
+            <span className="font-bold text-2xl">{t("revtitle2")}</span>
+            <h1>{t("revdesc")}</h1>
+            <div className="flex gap-2 items-center">
+              <h1 className="font-bold">{t("mark")}</h1>{" "}
+              <ReactStars count={5} size={24} color2={"#ffd700"} />
+            </div>
+          </div>
           <Contact />
         </TabPanel>
       </Tabs>

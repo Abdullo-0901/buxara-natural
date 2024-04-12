@@ -1,5 +1,4 @@
 import { Button } from "@mantine/core";
-import ReactStars from "react-stars";
 
 const Contact = () => {
   return (
@@ -12,7 +11,6 @@ const Contact = () => {
           Got a technical issue? Want to send feedback about a beta feature?
           Need details about our Business plan? Let us know.
         </p>
-        <ReactStars count={5} size={24} color2={"#ffd700"} />
 
         <form action="#" className="space-y-8">
           <div className="grid grid-cols-2 gap-5">

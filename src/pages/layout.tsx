@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import { HeaderMenu, links } from "../components/Header/headers";
 import { useTranslation } from "react-i18next";
 import { Button, Flex, Input, Menu } from "@mantine/core";
@@ -40,10 +40,13 @@ const Layout = () => {
         <Outlet />
       </div>
       <footer className="grid sm:grid-cols-1 sm3:grid-cols-2   gap-9 md3:grid-cols-7 items-start max-w-[1450px] overflow-hidden p-[0_8px] m-[0_auto] mt-16">
-        <div className="flex sm:col-span-1 md3:col-span-2 flex-col w-[310px] gap-y-3">
+        <Link
+          to={"/"}
+          className="flex sm:col-span-1 md3:col-span-2 flex-col w-[310px] gap-y-3"
+        >
           <img className="sm:w-[150px]  md:w-[350px]" src="/logo.png" alt="" />
           <h1>{t("newscard1aboout")}</h1>
-        </div>
+        </Link>
         <div className="flex flex-col sm:hidden md3:flex ">
           {" "}
           <h1 className="font-bold mb-3 text-black">Menu</h1>

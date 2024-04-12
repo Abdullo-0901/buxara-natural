@@ -2,6 +2,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import { About, Collection, Contact, Home, Layout } from "./index";
 import ProductParamsPage from "../pages/product-params-page";
+import Notfound from "../pages/notfound";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "product/:id",
         element: <ProductParamsPage />,
+      },
+      {
+        path: "*",
+        element: <Notfound />,
       },
     ],
   },

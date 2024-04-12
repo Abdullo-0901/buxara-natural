@@ -53,10 +53,10 @@ const ProductParamsPage = () => {
         <>
           {datas.map((prod) => {
             return (
-              <div className="grid gap-14 grid-cols-2 mt-16 items-center">
+              <div className="grid gap-14 sm:grid-cols-1 md3:grid-cols-2 mt-16 items-center">
                 <img src={prod.img} alt="" />
 
-                <div className="pl-36">
+                <div className="sm:p-0 md3:pl-36">
                   <h1 className="text-3xl font-bold my-5">{t(prod.name)}</h1>
                   <Table
                     striped
@@ -111,22 +111,6 @@ const ProductParamsPage = () => {
           })}
         </>
       )}
-      {/* 
-      <Tabs defaultValue="gallery" pos={Center} className="mt-32">
-        <Tabs.List>
-          <Tabs.Tab value="gallery">Description</Tabs.Tab>
-          <Tabs.Tab value="messages">Reviews(0)</Tabs.Tab>
-        </Tabs.List>
-
-        <Tabs.Panel value="gallery">
-          <div className="flex flex-col gap-y-5  md:max-w-4xl m-[25px_auto]">
-            <h1>{t("paramstitle")}</h1>
-            <h1>{t("paramsdescription")}</h1>
-          </div>
-        </Tabs.Panel>
-
-        <Tabs.Panel value="messages">Messages tab content</Tabs.Panel>
-      </Tabs> */}
 
       <Tabs className="flex flex-col mt-16 justify-center items-center">
         <TabList>

@@ -1,4 +1,4 @@
-import { Burger, Flex, Group, Menu } from "@mantine/core";
+import { Burger, Drawer, Flex, Group, Menu } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { useTranslation } from "react-i18next";
 import { Link, NavLink } from "react-router-dom";
@@ -23,7 +23,7 @@ export const links = [
 
 export function HeaderMenu() {
   const [t] = useTranslation();
-  const [opened, { toggle }] = useDisclosure(false);
+  const [opened, { toggle, close }] = useDisclosure(false);
 
   const items = links.map((link) => {
     return (
@@ -65,6 +65,48 @@ export function HeaderMenu() {
 
           <Language />
           <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" />
+          {opened && (
+            <Drawer
+              opened={opened}
+              size={"xs"}
+              onClose={close}
+              overlayProps={{ backgroundOpacity: 0.5, blur: 4 }}
+              transitionProps={{
+                transition: "rotate-left",
+                duration: 150,
+                timingFunction: "linear",
+              }}
+              position="right"
+            >
+              {links.map((link) => {
+                return (
+                  <Menu
+                    key={link.label}
+                    trigger="hover"
+                    transitionProps={{ exitDuration: 0 }}
+                    withinPortal
+                  >
+                    <Menu.Target>
+                      <Flex>
+                        <NavLink
+                          onClick={close}
+                          to={link.link}
+                          style={({ isActive }) => {
+                            return {
+                              fontWeight: isActive ? "bold" : "",
+                              color: isActive ? "black" : "gray",
+                            };
+                          }}
+                        >
+                          {t(link.label)}
+                        </NavLink>
+                      </Flex>
+                    </Menu.Target>
+                  </Menu>
+                );
+              })}
+            </Drawer>
+          )}
         </div>
       </div>
     </header>

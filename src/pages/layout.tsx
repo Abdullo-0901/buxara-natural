@@ -36,15 +36,15 @@ const Layout = () => {
   return (
     <div>
       <HeaderMenu />
-      <div className="max-w-[1450px] overflow-hidden p-[0_8px] m-[0_auto] mt-2">
+      <div className="max-w-[1450px] overflow-hidden  p-[0_8px] m-[0_auto] mt-2">
         <Outlet />
       </div>
-      <footer className="grid grid-cols-7 items-start max-w-[1450px] overflow-hidden p-[0_8px] m-[0_auto] mt-16">
-        <div className="flex col-span-2 flex-col w-[310px] gap-y-3">
-          <img className="w-[350px]" src="/logo.png" alt="" />
+      <footer className="grid sm:grid-cols-1 sm3:grid-cols-2   gap-9 md3:grid-cols-7 items-start max-w-[1450px] overflow-hidden p-[0_8px] m-[0_auto] mt-16">
+        <div className="flex sm:col-span-1 md3:col-span-2 flex-col w-[310px] gap-y-3">
+          <img className="sm:w-[150px]  md:w-[350px]" src="/logo.png" alt="" />
           <h1>{t("newscard1aboout")}</h1>
         </div>
-        <div className="flex flex-col ">
+        <div className="flex flex-col sm:hidden md3:flex ">
           {" "}
           <h1 className="font-bold mb-3 text-black">Menu</h1>
           {items}
@@ -58,7 +58,7 @@ const Layout = () => {
           <span> +998 93 383 75 85 </span>
           <span>+998 93 960 78 00</span>
         </div>
-        <div className="flex flex-col col-span-3 pl-10">
+        <div className="flex flex-col sm:hidden md3:flex col-span-3 pl-10">
           <p className="font-bold mb-3">Subscribe to our email</p>
           <div className="shadow-lg p-[15px_10px] rounded-3xl relative">
             <Input placeholder="Enter You Email" type="email" />

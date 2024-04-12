@@ -43,31 +43,38 @@ const Home = () => {
         />
 
         <div>
-          <h1 className="  md3:text-[68px] sm3:text-[32px] sm:text-[22px]  text-white font-bold">
+          <h1 className="  md3:text-[68px] sm3:text-[32px] sm:text-[18px]  text-white font-bold">
             {t("hometitle1")}
           </h1>
-          <h1 className="md3:text-[108px] sm3:text-[42px] sm:text-[32px] text-white font-bold">
+          <h1 className="md3:text-[108px] sm3:text-[42px] sm:text-[28px] text-white font-bold">
             {t("hometitle2")}
           </h1>
-          <h1 className="md3:text-[118px] sm3:text-[5 tex2px] sm:text-[42px] text-white font-bold">
+          <h1 className="md3:text-[118px] sm3:text-[5 tex2px] sm:text-[32px] text-white font-bold">
             {t("hometitle3")}
           </h1>
         </div>
       </section>
       {/* section 2 */}
 
-      <section className="grid sm:grid-cols-1 sm3:grid-cols-2 gap-5 lg:grid-cols-4 mt-8">
+      <section className="grid sm:grid-cols-2 sm3:grid-cols-2 gap-5 lg:grid-cols-4 mt-8">
         {isLoading
           ? Array.from({ length: 4 }, (_, i) => i).map((_item, index) => (
               <Skeleton key={index} height={100} radius="md" />
             ))
           : homeSection?.map((elem) => {
               return (
-                <div key={elem.id} className="flex  items-center gap-5">
+                <div
+                  key={elem.id}
+                  className="flex sm:flex-col lg:flex-row justify-start  items-center gap-5"
+                >
                   <img src={`/section2_home/${elem.img}`} />
                   <div>
-                    <h1 className="font-bold text-[18px]">{t(elem.title)}</h1>
-                    <h1 className="text-[#bcbcbc]">{t(elem.description)}</h1>
+                    <h1 className="font-bold sm:text-[14px] md:text-[18px]">
+                      {t(elem.title)}
+                    </h1>
+                    <h1 className="text-[#bcbcbc] sm:text-[12px] ">
+                      {t(elem.description)}
+                    </h1>
                   </div>
                 </div>
               );
@@ -120,7 +127,7 @@ const Home = () => {
       <CardComponents color="307e7a" img="card4.png" />
 
       {/* News */}
-      <section className="grid grid-cols-3 gap-40">
+      <section className="grid sm:grid-cols-1 mmd2:grid-cols-2 lg:grid-cols-3 sm:justify-center items-center gap-40">
         <NewsCard
           text="newscard1aboout"
           t={t}

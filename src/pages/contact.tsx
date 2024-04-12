@@ -3,7 +3,7 @@ import ContactComponent from "../components/contact";
 const Contact = () => {
   return (
     <section className="">
-      <div className="grid grid-cols-2 my-16 gap-16 items-center">
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 my-16 gap-16 items-center">
         <div>
           <h1 className="text-4xl font-bold">Aloqa</h1>
           <ContactComponent rep />

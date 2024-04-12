@@ -10,7 +10,7 @@ export interface NewsProps {
 
 const NewsCard = ({ img, text, t, title }: NewsProps) => {
   return (
-    <div className="flex flex-col gap-y-4 ">
+    <div className="flex  sm:justify-center items-center flex-col gap-y-4 ">
       <div className="rounded-[30px]">
         <Image
           radius={30}
@@ -26,7 +26,9 @@ const NewsCard = ({ img, text, t, title }: NewsProps) => {
         <span>от admin</span>
       </div>
       <p className="text-[#000000] text-[18px] font-bold">{t(title)}</p>
-      <h1 className="text-[#a4a4a4]">{t(text)}</h1>
+      <h1 className="text-[#a4a4a4] sm:text-center mmd2:text-start">
+        {t(text)}
+      </h1>
     </div>
   );
 };

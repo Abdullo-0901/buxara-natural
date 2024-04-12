@@ -2,12 +2,12 @@ import { Skeleton, Table } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
+import ReactStars from "react-stars";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import Contact from "../components/contact";
+import ContactComponent from "../components/contact";
 import { getSummerProductsHome } from "../lib/api";
 import { WinterProductHome } from "../lib/types/home";
-import ReactStars from "react-stars";
 
 const ProductParamsPage = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -155,7 +155,7 @@ const ProductParamsPage = () => {
               <ReactStars count={5} size={24} color2={"#ffd700"} />
             </div>
           </div>
-          <Contact />
+          <ContactComponent />
         </TabPanel>
       </Tabs>
     </div>

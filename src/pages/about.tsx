@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 
 const About = () => {
   const { t } = useTranslation();
-
+  document.title = "About";
   return (
     <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-10 my-16 items-center">
       <img

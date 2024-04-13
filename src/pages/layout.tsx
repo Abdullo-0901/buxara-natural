@@ -6,6 +6,8 @@ import { Button, Flex, Input, Menu } from "@mantine/core";
 const Layout = () => {
   const { t } = useTranslation();
 
+  document.title = "Home";
+
   const items = links.map((link) => {
     return (
       <Menu

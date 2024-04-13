@@ -8,6 +8,7 @@ import CardsComponent from "../components/cards";
 import NewsCard from "../components/news.card";
 
 const Home = () => {
+  document.title = "Home";
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [homeSection, setHomeSection] = useState<HomeSection[]>([]); // TODO: add state when API is ready.
   const [summer, setSummer] = useState<WinterProductHome[]>([]);

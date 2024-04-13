@@ -1,6 +1,8 @@
 import ContactComponent from "../components/contact";
 
 const Contact = () => {
+  document.title = "Contact";
+
   return (
     <section className="">
       <div className="grid sm:grid-cols-1 md:grid-cols-2 my-16 gap-16 items-center">
@@ -19,21 +21,21 @@ const Contact = () => {
           </iframe>
         </div>{" "}
       </div>
-      <div className="grid grid-cols-3 mb-16">
-        <div className="flex items-center justify-center gap-9">
+      <div className="grid sm:grid-cols-1 mmd:grid-cols-2 lg:grid-cols-3 mb-16 ">
+        <div className="flex sm:items-start lg:items-center sm:justify-start md:justify-center gap-9">
           <img src="/contact/email.svg" alt="" />
           <h1>
             <span className="font-bold">Email</span>:info@bnpfabric.uz
           </h1>
         </div>
-        <div className="flex items-center justify-center gap-9">
+        <div className="flex sm:items-start lg:items-center my-5 sm:justify-start md:justify-center gap-9">
           <img src="/contact/phone.svg" alt="" />
           <h1>
             <span className="font-bold">Tel</span>:+992 989195929 <br /> +992
             908838685
           </h1>
         </div>
-        <div className="flex items-center  justify-center gap-9">
+        <div className="flex sm:items-start lg:items-center  sm:justify-start md:justify-center gap-9">
           <img src="/contact/map.svg" alt="" />
           <h1>
             <span className="font-bold">Manzil</span>:Buxoro, st. Alpomish 80

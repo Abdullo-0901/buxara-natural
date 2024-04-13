@@ -35,6 +35,8 @@ const ProductParamsPage = () => {
   const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
 
+  document.title = `${t(id as string)}`;
+
   const datas = summer.filter((el) => {
     return t(el.name) == t(id as string);
   });

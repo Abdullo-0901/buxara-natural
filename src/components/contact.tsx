@@ -1,9 +1,55 @@
 import { Button } from "@mantine/core";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { toast } from "react-toastify";
 interface ContatctProps {
   rep?: boolean;
 }
 
 const ContactComponent = ({ rep }: ContatctProps) => {
+  const { t } = useTranslation();
+  const [message, setMessage] = useState<string>("");
+  const [name, setName] = useState<string>("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+
+  const sendMessage = async () => {
+    // useEffect(() => {
+    //   Aos.init();
+    // }, []);
+
+    const token = "7014941655:AAGccnh01y1JkW9E3ggcwSlg5NwoaEKQdL8";
+    const chatId = "5923880668"; // The chat ID of the user or group you want to send the message to
+    const url = `https://api.telegram.org/bot${token}/sendMessage`;
+
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: `Email: ${message}\nName: ${phoneNumber}\nDescription: ${name}`,
+        }),
+      });
+
+      if (response.ok) {
+        console.log("Message sent successfully");
+
+        toast.success(t("alertMessage"));
+        setMessage("");
+        setPhoneNumber("");
+        setName("");
+      } else {
+        console.error("Failed to send message");
+        toast.error(await response.text());
+        throw new Error("Server error");
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
+    }
+  };
+
   return (
     <section className="bg-white ">
       <div className=" mx-auto max-w-screen-xl">
@@ -31,6 +77,8 @@ const ContactComponent = ({ rep }: ContatctProps) => {
             id="email"
             placeholder={`${rep ? "Sizning electron manzilingiz" : ""}`}
             className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5   "
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
             required
           />
 
@@ -48,6 +96,8 @@ const ContactComponent = ({ rep }: ContatctProps) => {
               id="subject"
               placeholder={`${rep ? "Telefon raqami" : ""}`}
               className="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm   "
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               required
             />
           </div>
@@ -65,11 +115,16 @@ const ContactComponent = ({ rep }: ContatctProps) => {
               rows={6}
               placeholder={`${rep ? "Sizning xabaringiz shu erda" : ""}`}
               className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300  "
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
             ></textarea>
           </div>
           <Button
             type="submit"
             style={{ backgroundColor: "red", outline: "none" }}
+            onClick={(e) => {
+              e.preventDefault(), sendMessage();
+            }}
           >
             Yuborish
           </Button>

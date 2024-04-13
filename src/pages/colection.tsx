@@ -7,6 +7,8 @@ import { getSummerProductsHome } from "../lib/api";
 import { WinterProductHome } from "../lib/types/home";
 
 const Colection: React.FC = () => {
+  document.title = "Collection";
+
   const { t } = useTranslation();
   const [selectedLanguage, setSelectedLanguage] = useState<string>("winter");
   const [isLoading, setIsLoading] = useState<boolean>(false);

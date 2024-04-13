@@ -62,51 +62,62 @@ export function HeaderMenu() {
             </Link>
             {items}
           </Group>
-
-          <Language />
-          <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" />
-          {opened && (
-            <Drawer
+          <div className="sm:block md:hidden">
+            <Link to="/" className="mr-4">
+              <img src="/logo.png" className="h-[36px]" alt="" />
+            </Link>
+          </div>
+          <div className="flex items-center gap-2">
+            <Language />
+            <Burger
               opened={opened}
-              size={"xs"}
-              onClose={close}
-              overlayProps={{ backgroundOpacity: 0.5, blur: 4 }}
-              transitionProps={{
-                transition: "rotate-left",
-                duration: 150,
-                timingFunction: "linear",
-              }}
-              position="right"
-            >
-              {links.map((link) => {
-                return (
-                  <Menu
-                    key={link.label}
-                    trigger="hover"
-                    transitionProps={{ exitDuration: 0 }}
-                    withinPortal
-                  >
-                    <Menu.Target>
-                      <Flex>
-                        <NavLink
-                          onClick={close}
-                          to={link.link}
-                          style={({ isActive }) => {
-                            return {
-                              fontWeight: isActive ? "bold" : "",
-                              color: isActive ? "black" : "gray",
-                            };
-                          }}
-                        >
-                          {t(link.label)}
-                        </NavLink>
-                      </Flex>
-                    </Menu.Target>
-                  </Menu>
-                );
-              })}
-            </Drawer>
-          )}
+              onClick={toggle}
+              size="sm"
+              hiddenFrom="sm"
+            />
+            {opened && (
+              <Drawer
+                opened={opened}
+                size={"xs"}
+                onClose={close}
+                overlayProps={{ backgroundOpacity: 0.5, blur: 4 }}
+                transitionProps={{
+                  transition: "rotate-left",
+                  duration: 150,
+                  timingFunction: "linear",
+                }}
+                position="right"
+              >
+                {links.map((link) => {
+                  return (
+                    <Menu
+                      key={link.label}
+                      trigger="hover"
+                      transitionProps={{ exitDuration: 0 }}
+                      withinPortal
+                    >
+                      <Menu.Target>
+                        <Flex>
+                          <NavLink
+                            onClick={close}
+                            to={link.link}
+                            style={({ isActive }) => {
+                              return {
+                                fontWeight: isActive ? "bold" : "",
+                                color: isActive ? "black" : "gray",
+                              };
+                            }}
+                          >
+                            {t(link.label)}
+                          </NavLink>
+                        </Flex>
+                      </Menu.Target>
+                    </Menu>
+                  );
+                })}
+              </Drawer>
+            )}
+          </div>
         </div>
       </div>
     </header>

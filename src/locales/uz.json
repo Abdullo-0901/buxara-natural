@@ -1,8 +1,8 @@
 {
-  "navlink1": "Uy",
+  "navlink1": "Asosiy",
   "navlink2": "To'plam",
   "navlink3": "Biz Haqimizda ",
-  "navlink5": "Ulanish",
+  "navlink5": "Bog'lanish",
   "hometitle1": "Buxoro",
   "hometitle2": "Tabiiy",
   "hometitle3": "Mahsulot",
@@ -127,5 +127,9 @@
   "aboutmdesec6": "Buxoro matolari, Eko sumkalar, Buxoro matolari, Eko sumkalarAyni paytda 80 dan ortiq oila o‘z oilasini moddiy jihatdan ta’minlab, korxona nufuzi va muvaffaqiyatiga hissa qo‘shmoqda.",
   "aboutmdesec7": "Buxoro matolari, Eko sumkalar, Buxoro matolari, Eko sumkalarBu talabni qondirish uchun 50 ta to‘quv dastgohi to‘xtovsiz yuqori tezlikda ishlamoqda.",
   "aboutmdesec8": "Buxoro matolari, Eko sumkalar, Buxoro matolari, Eko sumkalarOyiga 200-250 ming metr gazlama to‘qish quvvatiga egamiz.",
-  "aboutmdesec9": "Buxoro matolari, Eko sumkalar, Buxoro matolari, Eko sumkalar“Bukhara Natural Product” kompaniyasi oʻz sodiq mijozlariga istalgan vaqtda xizmat koʻrsatishdan mamnun."
+  "aboutmdesec9": "Buxoro matolari, Eko sumkalar, Buxoro matolari, Eko sumkalar“Bukhara Natural Product” kompaniyasi oʻz sodiq mijozlariga istalgan vaqtda xizmat koʻrsatishdan mamnun.",
+  "Menu": "Menyu",
+  "Contacts": "Aloqalar",
+  "Subscribe to our email": "Elektron pochtamizga obuna bo'ling",
+  "Subscribe": "Obuna bo'ling"
 }

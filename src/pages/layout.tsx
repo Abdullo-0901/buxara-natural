@@ -87,11 +87,11 @@ const Layout = () => {
         </Link>
         <div className="flex flex-col sm:hidden md3:flex ">
           {" "}
-          <h1 className="font-bold mb-3 text-black">Menu</h1>
+          <h1 className="font-bold mb-3 text-black"> {t("Menu")}</h1>
           {items}
         </div>
         <div className="flex  flex-col gap-y-1">
-          <p className="font-bold mb-3">Contacts</p>
+          <p className="font-bold mb-3">{t("Contacts")}</p>
           <span>Bukhara, st.Alpomysh 80.</span>
           <span> Bnpuz@bk.ru</span>
           <span>bnp_fabrik </span>
@@ -100,7 +100,7 @@ const Layout = () => {
           <span>+998 93 960 78 00</span>
         </div>
         <div className="flex flex-col sm:hidden md3:flex col-span-3 pl-10">
-          <p className="font-bold mb-3">Subscribe to our email</p>
+          <p className="font-bold mb-3">{t("Subscribe to our email")}</p>
           <div className="shadow-lg shadw shadow-red-500  p-[15px_10px] pr-[129px] rounded-3xl relative">
             <form action="">
               <Input
@@ -118,7 +118,7 @@ const Layout = () => {
                     e.preventDefault(), sendMessage();
                   }}
                 >
-                  Subscribe
+                  {t("Subscribe")}
                 </Button>
               </div>
             </form>
@@ -126,7 +126,7 @@ const Layout = () => {
         </div>
       </footer>
       <div className="flex flex-col sm:flex md3:hidden col-span-3 ">
-        <p className="font-bold mb-3">Subscribe to our email</p>
+        <p className="font-bold mb-3">{t("Subscribe to our email")}</p>
         <div className="shadow-lg shadw shadow-red-500  p-[15px_10px] pr-[129px] rounded-3xl relative">
           <form action="">
             <Input
@@ -144,7 +144,7 @@ const Layout = () => {
                   e.preventDefault(), sendMessage();
                 }}
               >
-                Subscribe
+                {t("Subscribe")}
               </Button>
             </div>
           </form>

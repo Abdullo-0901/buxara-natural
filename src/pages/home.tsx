@@ -36,7 +36,7 @@ const Home = () => {
 
   return (
     <div className="">
-      <section className="bg-[#464342]  sm:h-auto sm2:h-[30vh] mmd:h-[45vh]  sm3:h-[40vh] md:h-[65vh] lg:min-h-[90vh] pr-1 items-center flex justify-end  rounded-3xl w-full relative ">
+      <section className="bg-[#464342]  sm:h-auto sm2:h-[40vh] mmd:h-[45vh]  sm3:h-[40vh] md:h-[65vh] lg:min-h-[90vh] pr-1 items-center flex justify-end  rounded-3xl w-full relative ">
         <img
           className="absolute right-0 w-full -left-[22%]"
           src="/home.png"

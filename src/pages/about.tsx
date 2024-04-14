@@ -10,7 +10,7 @@ const About = () => {
         src="/aboutme.png"
         alt=""
       />
-      <div className="flex flex-col gap-y-8">
+      <div className="flex flex-col gap-y-1">
         <h1 className="font-bold text-4xl">{t("aboutmetitle")}</h1>
         <h1>{t("aboutmetitle1")}</h1>
         <h1 className="">{t("aboutmdesec1")}</h1>

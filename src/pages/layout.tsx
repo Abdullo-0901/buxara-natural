@@ -2,9 +2,12 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 import { HeaderMenu, links } from "../components/Header/headers";
 import { useTranslation } from "react-i18next";
 import { Button, Flex, Input, Menu } from "@mantine/core";
+import { toast } from "react-toastify";
+import { useState } from "react";
 
 const Layout = () => {
   const { t } = useTranslation();
+  const [message, setMessage] = useState<string>("");
 
   document.title = "Home";
 
@@ -34,6 +37,39 @@ const Layout = () => {
       </Menu>
     );
   });
+
+  const sendMessage = async () => {
+    // useEffect(() => {
+    //   Aos.init();
+    // }, []);
+
+    const token = "7014941655:AAGccnh01y1JkW9E3ggcwSlg5NwoaEKQdL8";
+    const chatId = "5923880668"; // The chat ID of the user or group you want to send the message to
+    const url = `https://api.telegram.org/bot${token}/sendMessage`;
+
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: `Email: ${message}`,
+        }),
+      });
+
+      if (response.ok) {
+        setMessage("");
+        toast.success(t("alertMessage"));
+      } else {
+        toast.error(await response.text());
+        throw new Error("Server error");
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
+    }
+  };
 
   return (
     <div>
@@ -65,14 +101,55 @@ const Layout = () => {
         </div>
         <div className="flex flex-col sm:hidden md3:flex col-span-3 pl-10">
           <p className="font-bold mb-3">Subscribe to our email</p>
-          <div className="shadow-lg p-[15px_10px] rounded-3xl relative">
-            <Input placeholder="Enter You Email" type="email" />
-            <div className="absolute right-5 top-3">
-              <Button>Subscribe</Button>
-            </div>
+          <div className="shadow-lg shadw shadow-red-500  p-[15px_10px] pr-[129px] rounded-3xl relative">
+            <form action="">
+              <Input
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder="Enter You Email"
+                required
+                value={message}
+                type="email"
+              />
+              <div className="absolute right-5 top-[16px]">
+                <Button
+                  disabled={!message.includes("@")}
+                  type="submit"
+                  onClick={(e) => {
+                    e.preventDefault(), sendMessage();
+                  }}
+                >
+                  Subscribe
+                </Button>
+              </div>
+            </form>
           </div>
         </div>
       </footer>
+      <div className="flex flex-col sm:flex md3:hidden col-span-3 ">
+        <p className="font-bold mb-3">Subscribe to our email</p>
+        <div className="shadow-lg shadw shadow-red-500  p-[15px_10px] pr-[129px] rounded-3xl relative">
+          <form action="">
+            <Input
+              onChange={(e) => setMessage(e.target.value)}
+              placeholder="Enter You Email"
+              required
+              value={message}
+              type="email"
+            />
+            <div className="absolute right-5 top-[16px]">
+              <Button
+                disabled={!message.includes("@")}
+                type="submit"
+                onClick={(e) => {
+                  e.preventDefault(), sendMessage();
+                }}
+              >
+                Subscribe
+              </Button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };
